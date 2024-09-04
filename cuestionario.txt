@@ -1,0 +1,13 @@
+CUESTIONARIO
+
+    1. Si te asignan una tarea y ves que la funcionalidad no está definida al 100%, ¿qué haces?
+
+    Ante una situación como la propuesta en la pregunta la primera acción sería leer correctamente todo lo relacionado con la tarea; es decir, debo consultar la documentación alrededor de la tarea. Es posible que no haya visto todo correctamente o que haya sido simplemente un error de comprensión. 
+    En caso de que la tarea sí que carezca de definición, el siguiente paso sería preguntar al responsable. Para saber qué es lo que quiere exactamente la persona que te ha solicitado algo, lo mejor es preguntar directamente. 
+    De todos modos, es importante pensar en las preguntas antes de realizarlas. El objetivo es que todo esté claro y no volver más tarde con las mismas dudas.
+    Por último, en caso de que la funcionalidad no esté definida al 100% debido a que no se ha planteado una forma, pensaría y apuntaría diferentes opciones de cómo resolvería yo el problema. Si alguna de estas posibilidades encajan en el proyecto, iría a implementarlas y las dejaría bien documentadas por si en un futuro otra persona tuviera que trabajar con la misma funcionalidad.
+
+    2. ¿Has utilizado algún sistema de control de versiones? ¿Cómo lo usabas?
+    Sí. 
+    En mis años de carrera he utilizado github de forma habitual. Es común realizar trabajos en grupo y esta es la forma más adecuada de hacerlo. El uso que le hemos dado durante la formación no ha sido el más adecuado puesto que solo utilizábamos la rama 'main' y los commits iban directamente al proyecto principal. 
+    En mi estancia en la empresa Veridas he utilizado Gitlab de una forma más profesional y correcta. Distintas ramas, commits bien documentados e integración continua. Para poder realizar un commit debíamos añadir otro fichero de testing de forma que se comprobase automáticamente antes de poder lanzar el commit.
