@@ -1,7 +1,7 @@
-package com.prueba.prueba_tesicnor.controller;
+package com.prueba.controller;
 
-import com.prueba.prueba_tesicnor.model.Pelicula;
-import com.prueba.prueba_tesicnor.repository.PeliculaRepository;
+import com.prueba.model.Pelicula;
+import com.prueba.repository.PeliculaRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +20,7 @@ public class PeliculaController {
 
     @GetMapping
     public List<Pelicula> getAllPeliculas() {
-        return peliculaRepository.findAll();
+        System.out.println(peliculaRepository);
+        return (List<Pelicula>) peliculaRepository.findAll();
     }
 }

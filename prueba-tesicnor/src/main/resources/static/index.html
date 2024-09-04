@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Películas Star Wars</title>
+    <link href="styles.css" rel="stylesheet"/>
+    <script>
+        // Función de carga desde API
+        function loadPeliculas() {
+            fetch('/peliculas')
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Respuesta recibida:", data);
+                    showPeliculas(data);
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        // Función show
+        function showPeliculas(peliculas) {
+            const tableBody = document.getElementById('peliculas-table-body');
+            tableBody.innerHTML = '';
+
+            peliculas.forEach(pelicula => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                <td>${pelicula.imdbID}</td>
+                <td>${pelicula.title}</td>
+                <td>${pelicula.year}</td>
+                <td>${pelicula.plot}</td>`;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Función de filtro
+        function filterPeliculas() {
+            const titleFilter = document.getElementById('title-filter').value.toLowerCase();
+            const yearFilter = document.getElementById('filter-year').value;
+
+            fetch('/peliculas')
+                .then(response => response.json())
+                .then(peliculas => {
+                    const peliculasFiltered = peliculas.filter(pelicula => {
+                        let isFiltered = true;
+
+                        if (titleFilter) {
+                            isFiltered = pelicula.title.toLowerCase().includes(titleFilter);
+                        }
+
+                        if (yearFilter && isFiltered) {
+                            isFiltered = pelicula.year === parseInt(yearFilter);
+                        }
+
+                        return isFiltered;
+                    });
+                    showPeliculas(peliculasFiltered);
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        // Event listeners para filtros
+        window.onload = function() {
+            document.getElementById('title-filter').addEventListener('input', filterPeliculas);
+            document.getElementById('filter-year').addEventListener('input', filterPeliculas);
+            loadPeliculas();
+        }
+    </script>
+</head>
+<body>
+
+<h2>Lista de Películas</h2>
+
+<div>
+    <label for="title-filter">Filtrar por Título:</label>
+    <input type="text" id="title-filter" class="filter-input" placeholder="Ingrese título">
+
+    <label for="filter-year">Filtrar por Año:</label>
+    <input type="number" id="filter-year" class="filter-input" placeholder="Ingrese año">
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>imdbID</th>
+        <th>Título</th>
+        <th>Año</th>
+        <th>Plot</th>
+    </tr>
+    </thead>
+    <tbody id="peliculas-table-body">
+    <!-- Filas de la tabla-->
+    </tbody>
+</table>
+
+</body>
+</html>
